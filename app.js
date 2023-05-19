@@ -11,25 +11,28 @@ app.set('view engine', 'ejs');
 app.listen(3000);
 
 app.get('/', (req, res) => {
-    // res.send('<p> HomePage </p>');
-    // res.sendFile('./views/index.html', { root:__dirname });
-    res.render('index');
+    const blogs = [
+        {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+        {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+        {title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+      ];
+    res.render('index', { title: 'Home', blogs });
 });
 
 app.get('/about', (req, res) => {
     // res.send('<p> About </p>');
     // res.sendFile('./views/about.html', { root:__dirname });
-    res.render('about');
+    res.render('about', { title: 'About'});
 });
 
 app.get('/blogs/create', (req, res) => {
-    res.render('create');
+    res.render('create', { title: 'Create Blog'});
 })
    
 
 //404 Page
 
 app.use((req, res) => {
-    res.status(404).render('404');
+    res.status(404).render('404', { title: '404'});
 });//works like the default case...it's put in last to be the one that is carried out if a match is not found
 
