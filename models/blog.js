@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;//works like a constructor function
 
 const blogSchema = new Schema({
     title: {
-        type:String,
+        type: String,
         required: true
     },
 
